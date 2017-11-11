@@ -1,7 +1,7 @@
 module.exports = {
   entry: './main.js',
   output: {
-    path: `${__dirname}/public/build/`,
+    path: `${__dirname}/docs/build/`,
     publicPath: 'build/',
     filename: 'bundle.js',
   },
@@ -17,7 +17,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: [/node_modules/, /public/],
+        exclude: [/node_modules/, /docs/],
       },
       {
         test: /\.css$/,
@@ -32,7 +32,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     host: '0.0.0.0',
-    contentBase: 'public',
+    contentBase: 'docs',
     port: '8090',
   },
 };
