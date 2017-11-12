@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import ProductTable from './components/ProductTable.vue';
-import AppBar from './components/AppBar.vue';
+  import ProductTable from './components/ProductTable.vue';
+  import AppBar from './components/AppBar.vue';
 
-export default {
-  name: 'app',
-  components: {
-    ProductTable,
-    AppBar,
-  },
-};
+  export default {
+    name: 'app',
+    components: {
+      ProductTable,
+      AppBar,
+    },
+  };
 </script>

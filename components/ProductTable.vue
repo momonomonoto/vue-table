@@ -72,13 +72,13 @@
             <span class="table__input-description">{{productDescriptionOperation}}</span>
           </md-table-cell>
         </md-table-row>
-        <md-table-row v-for="(entry, index)  in tableProductList" :key="index">
-          <md-table-cell v-for="(name, key) in entry" :key="key">{{name}}</md-table-cell>
+        <md-table-row v-for="(product, index)  in tableProductList" :key="index">
+          <md-table-cell v-for="(property, key) in product" :key="key">{{property}}</md-table-cell>
           <md-table-cell class="table__icon-container">
-            <md-button @click="removeProduct(entry)" class="md-icon-button">
+            <md-button @click="removeProduct(product)" class="md-icon-button">
               <md-icon>delete</md-icon>
             </md-button>
-            <md-button @click="showEditableProductForm(entry)" class="md-icon-button">
+            <md-button @click="showEditableProductForm(product)" class="md-icon-button">
               <md-icon >edit</md-icon>
             </md-button>
           </md-table-cell>
@@ -167,19 +167,19 @@
         this.showProductForm();
       },
       // Функция для переключения в режим редактирования продукта
-      showEditableProductForm(entry) {
+      showEditableProductForm(product) {
         this.showProductForm();
         const displayProductForm = true;
         const editableProduct = true;
         // Данные из полей редактируемого продукта заполняются в форму
-        const { name, count, price } = entry;
+        const { name, count, price } = product;
         Object.assign(this, { name, count, price, displayProductForm, editableProduct });
         // Свойство editableProductIndex получает индекс редактируемого продукта
-        this.editableProductIndex = this.productList.indexOf(entry);
+        this.editableProductIndex = this.productList.indexOf(product);
       },
       // Функция для удаления продукта
-      removeProduct(item) {
-        const index = this.productList.indexOf(item);
+      removeProduct(product) {
+        const index = this.productList.indexOf(product);
         this.displayProductForm = false;
         this.editableProduct = false;
         // Из общего массива объектов продукта удаляется выбранный элемент по индексу
@@ -206,7 +206,7 @@
       totalProduct() {
         if (this.productList.length > 0) {
           const totalProduct = this.productList
-            .map(elem => elem.count * elem.price)
+            .map(product => product.count * product.price)
             .reduce((previous, current) => previous + current);
           return totalProduct;
         }
