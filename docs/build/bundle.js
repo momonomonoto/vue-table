@@ -11410,6 +11410,7 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable no-new */
 _vue2.default.config.productionTip = false;
 _vue2.default.use(_vueMaterial2.default);
 
@@ -12534,7 +12535,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
 
 exports.default = {
   name: 'ProductTable',
@@ -12616,23 +12616,23 @@ exports.default = {
     },
 
     // Функция для переключения в режим редактирования продукта
-    showEditableProductForm: function showEditableProductForm(entry) {
+    showEditableProductForm: function showEditableProductForm(product) {
       this.showProductForm();
       var displayProductForm = true;
       var editableProduct = true;
       // Данные из полей редактируемого продукта заполняются в форму
-      var name = entry.name,
-          count = entry.count,
-          price = entry.price;
+      var name = product.name,
+          count = product.count,
+          price = product.price;
 
       (0, _assign2.default)(this, { name: name, count: count, price: price, displayProductForm: displayProductForm, editableProduct: editableProduct });
       // Свойство editableProductIndex получает индекс редактируемого продукта
-      this.editableProductIndex = this.productList.indexOf(entry);
+      this.editableProductIndex = this.productList.indexOf(product);
     },
 
     // Функция для удаления продукта
-    removeProduct: function removeProduct(item) {
-      var index = this.productList.indexOf(item);
+    removeProduct: function removeProduct(product) {
+      var index = this.productList.indexOf(product);
       this.displayProductForm = false;
       this.editableProduct = false;
       // Из общего массива объектов продукта удаляется выбранный элемент по индексу
@@ -12662,8 +12662,8 @@ exports.default = {
     // Вычисляемое свойство для подсчета общего итога
     totalProduct: function totalProduct() {
       if (this.productList.length > 0) {
-        var totalProduct = this.productList.map(function (elem) {
-          return elem.count * elem.price;
+        var totalProduct = this.productList.map(function (product) {
+          return product.count * product.price;
         }).reduce(function (previous, current) {
           return previous + current;
         });
@@ -12677,7 +12677,7 @@ exports.default = {
       return this.totalProperty('count');
     },
 
-    // Вычисляемое свойство для подсчета общей цены всеъ продуктов
+    // Вычисляемое свойство для подсчета общей цены всех продуктов
     totalPrice: function totalPrice() {
       return this.totalProperty('price');
     },
@@ -13382,14 +13382,14 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _vm._l(_vm.tableProductList, function(entry, index) {
+                  _vm._l(_vm.tableProductList, function(product, index) {
                     return _c(
                       "md-table-row",
                       { key: index },
                       [
-                        _vm._l(entry, function(name, key) {
+                        _vm._l(product, function(property, key) {
                           return _c("md-table-cell", { key: key }, [
-                            _vm._v(_vm._s(name))
+                            _vm._v(_vm._s(property))
                           ])
                         }),
                         _vm._v(" "),
@@ -13403,7 +13403,7 @@ var render = function() {
                                 staticClass: "md-icon-button",
                                 on: {
                                   click: function($event) {
-                                    _vm.removeProduct(entry)
+                                    _vm.removeProduct(product)
                                   }
                                 }
                               },
@@ -13417,7 +13417,7 @@ var render = function() {
                                 staticClass: "md-icon-button",
                                 on: {
                                   click: function($event) {
-                                    _vm.showEditableProductForm(entry)
+                                    _vm.showEditableProductForm(product)
                                   }
                                 }
                               },
