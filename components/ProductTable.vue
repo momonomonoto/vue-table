@@ -217,7 +217,7 @@
       totalCount() {
         return this.totalProperty('count');
       },
-      // Вычисляемое свойство для подсчета общей цены всеъ продуктов
+      // Вычисляемое свойство для подсчета общей цены всех продуктов
       totalPrice() {
         return this.totalProperty('price');
       },
