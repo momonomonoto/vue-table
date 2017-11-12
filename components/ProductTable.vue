@@ -19,7 +19,7 @@
           autofocus
           maxlength="20"
           placeholder="Найти товар"
-          v-model="filterProduct" >
+          v-model="filterProduct">
         </md-input>
       </md-input-container>
     <md-table>
@@ -192,6 +192,7 @@
       },
       // Функция для подсчета сумм определенного свойства продукта
       totalProperty(property) {
+      console.log('property');
         if (this.productList.length > 0) {
           const propertySum = this.productList
             .map(elem => elem[`${property}`])
