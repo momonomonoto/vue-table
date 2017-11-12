@@ -14,8 +14,7 @@
       </md-toolbar>
       <md-input-container
         v-show="displayFilterForm"
-        class="table__filter-container"
-      >
+        class="table__filter-container">
         <md-input
           autofocus
           maxlength="20"
