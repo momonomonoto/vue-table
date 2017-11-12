@@ -2,5 +2,8 @@
   "extends": "airbnb-base",
   "plugins": [
     "html"
-  ]
+  ],
+  "rules":{
+    "linebreak-style": ["error", "windows"]
+  }
 }
