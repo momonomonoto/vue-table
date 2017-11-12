@@ -6,3 +6,17 @@
 - Реализован функционал поиска товаров.
 
 Демо : https://momonomonoto.github.io/vue-table/index.html
+
+# Installation
+
+```bash
+git clone git@github.com:momonomonoto/vue-table.git
+npm install
+```
+# Development
+
+```bash
+npm start
+localhost:8090
+```
+
