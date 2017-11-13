@@ -247,6 +247,7 @@
     },
   };
 </script>
+
 <style scoped>
   .table__icon-container {
     display: flex;
